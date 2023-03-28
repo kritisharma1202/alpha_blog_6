@@ -19,7 +19,8 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     #temporarily hardcode to assign user to article bcoz for now we dont have authentication sys
-    @article.user = User.first
+    #@article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:notice] = "Article is saved successfully...!!!"
       #render plain: @article.inspect
